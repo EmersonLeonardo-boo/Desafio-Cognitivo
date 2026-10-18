@@ -1,3 +1,38 @@
+codigos = []
+dnis_remitentes = []
+nombres_remitentes = []
+dnis_destinatarios = []
+destinos = []
+
+def registrar_paquete():
+    """Función para registrar un nuevo paquete con validación de DNI"""
+    print("\n--- REGISTRO DE NUEVO PAQUETE ---")
+    
+    dni_rem = input("Ingrese DNI del remitente (8 dígitos): ")
+    while len(dni_rem) != 8 or not dni_rem.isdigit():
+        print("ERROR: El DNI debe tener exactamente 8 números.")
+        dni_rem = input("Ingrese DNI del remitente (8 dígitos): ")
+        
+    nombre_rem = input("Ingrese nombre completo del remitente: ")
+    
+    dni_dest = input("Ingrese DNI del destinatario (8 dígitos): ")
+    while len(dni_dest) != 8 or not dni_dest.isdigit():
+        print("ERROR: El DNI debe tener exactamente 8 números.")
+        dni_dest = input("Ingrese DNI del destinatario (8 dígitos): ")
+        
+    destino = input("Ingrese ciudad de destino: ")
+    
+    codigo_nuevo = "GUI-" + str(1001 + len(codigos))
+    
+    codigos.append(codigo_nuevo)
+    dnis_remitentes.append(dni_rem)
+    nombres_remitentes.append(nombre_rem)
+    dnis_destinatarios.append(dni_dest)
+    destinos.append(destino)
+    
+    print("\n¡REGISTRO EXITOSO!")
+    print("El código de guía asignado es:", codigo_nuevo)
+
 opcion = 0
 while opcion != 4:
         print("\n========================================")
@@ -16,7 +51,7 @@ while opcion != 4:
             continue
 
         if opcion == 1:
-            print("Ingrese los datos del paquete a registrar: ")
+            registrar_paquete()
         elif opcion == 2:
             print("Ingrese los datos del paquete a buscar: ")
         elif opcion == 3:

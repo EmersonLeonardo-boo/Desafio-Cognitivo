@@ -53,6 +53,22 @@ def buscar_paquete():
     else:
         print("\nERROR: El código de guía ingresado no existe.")
 
+def mostrar_paquete():
+    print("\n--- MOSTRAR PAQUETE ---")
+    codigo_buscar = input("Ingrese el código de guía a mostrar: ")
+
+    if codigo_buscar in codigos:
+        posicion = codigos.index(codigo_buscar)
+        print("\n--- DATOS DEL PAQUETE ---")
+        print("Código Guía        :", codigos[posicion])
+        print("DNI Remitente      :", dnis_remitentes[posicion])
+        print("Nombre Remitente   :", nombres_remitentes[posicion])
+        print("DNI Destinatario   :", dnis_destinatarios[posicion])
+        print("Nombre Destinatario:", nombres_destinatarios[posicion])
+        print("Destino            :", destinos[posicion])
+    else:
+        print("\nERROR: El código de guía ingresado no existe.")
+
 def menu_principal():
     opcion = 0
     while opcion != 4:
@@ -76,7 +92,7 @@ def menu_principal():
         elif opcion == 2:
             buscar_paquete()
         elif opcion == 3:
-            print("Ingrese los datos del paquete a ver: ")
+            mostrar_paquete()
         elif opcion == 4:
             print("\nSaliendo del sistema...")
         else:

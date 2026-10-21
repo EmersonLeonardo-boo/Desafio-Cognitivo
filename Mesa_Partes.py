@@ -6,7 +6,6 @@ nombres_destinatarios = []
 destinos = []
 
 def registrar_paquete():
-    """Función para registrar un nuevo paquete con validación de DNI"""
     print("\n--- REGISTRO DE NUEVO PAQUETE ---")
 
     dni_rem = input("Ingrese DNI del remitente (8 dígitos): ")
@@ -38,28 +37,12 @@ def registrar_paquete():
     print("El código de guía asignado es:", codigo_nuevo)
 
 def buscar_paquete():
-    """Función para buscar un paquete utilizando su código de guía"""
     print("\n--- BÚSQUEDA DE PAQUETE ---")
     codigo_buscar = input("Ingrese el código de guía a buscar: ")
 
     if codigo_buscar in codigos:
         posicion = codigos.index(codigo_buscar)
         print("\n--- PAQUETE ENCONTRADO ---")
-        print("Código Guía     :", codigos[posicion])
-        print("DNI Remitente   :", dnis_remitentes[posicion])
-        print("Nombre Remitente:", nombres_remitentes[posicion])
-        print("DNI Destinatario:", dnis_destinatarios[posicion])
-        print("Destino         :", destinos[posicion])
-    else:
-        print("\nERROR: El código de guía ingresado no existe.")
-
-def mostrar_paquete():
-    print("\n--- MOSTRAR PAQUETE ---")
-    codigo_buscar = input("Ingrese el código de guía a mostrar: ")
-
-    if codigo_buscar in codigos:
-        posicion = codigos.index(codigo_buscar)
-        print("\n--- DATOS DEL PAQUETE ---")
         print("Código Guía        :", codigos[posicion])
         print("DNI Remitente      :", dnis_remitentes[posicion])
         print("Nombre Remitente   :", nombres_remitentes[posicion])
@@ -68,6 +51,18 @@ def mostrar_paquete():
         print("Destino            :", destinos[posicion])
     else:
         print("\nERROR: El código de guía ingresado no existe.")
+
+def mostrar_paquetes():
+    print("\n--- LISTA DE PAQUETES REGISTRADOS ---")
+    total = len(codigos)
+
+    if total == 0:
+        print("No hay paquetes registrados todavía.")
+    else:
+        for i in range(total):
+            print(
+                f"{i+1}. Código: {codigos[i]} | Remitente: {nombres_remitentes[i]} | Destinatario: {nombres_destinatarios[i]} | Destino: {destinos[i]}"
+            )
 
 def menu_principal():
     opcion = 0
@@ -92,7 +87,7 @@ def menu_principal():
         elif opcion == 2:
             buscar_paquete()
         elif opcion == 3:
-            mostrar_paquete()
+            mostrar_paquetes()
         elif opcion == 4:
             print("\nSaliendo del sistema...")
         else:
